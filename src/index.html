@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TypeScript Space Game</title>
+        <base href="./">
+        <link rel="stylesheet" href="index.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+            <header class="grey darken-3" >
+                <div class="container valign-wrapper my-container" id="header">
+                    <a class="title" href="/">
+                        Space Game
+                    </a>
+                </div>
+            </header>
+            <div class="divider"></div>
+            <main class="container" id="content"></main>
+            <script type="text/javascript" src="index.js"></script>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal grey darken-3">
+            <div class="modal-content">
+                <form class="text" id="colonyCreate">
+                    <div class="row">
+                        <div class="input-field">
+                            <input id="colonyName" type="text" class="form-input form-text validate">
+                            <label class="active form-text" for="colonyName">Название колонии</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <input id="colonyAge" type="text" class="form-input form-text validate">
+                            <label class="active form-text" for="colonyAge">Возраст колонии</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <input id="colonyCountPeople" type="text" class="form-input form-text validate">
+                            <label class="active form-text" for="colonyCountPeople">Колличество жителей</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer grey darken-3">
+                        <button type="submit" class="modal-close waves-effect waves-light btn-flat form-text grey-custom">Создать</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="modal2" class="modal grey darken-3">
+            <div class="modal-content">
+                <form class="text" id="factoryCreate">
+                    <div class="row">
+                        <div class="input-field">
+                            <input id="factoryName" type="text" class="form-input form-text validate">
+                            <label class="active form-text" for="factoryName">Ширина фабрики</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <input id="factoryAge" type="text" class="form-input form-text validate">
+                            <label class="active form-text" for="factoryAge">Тип ресурса</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <input id="factoryCountPeople" type="text" class="form-input form-text validate">
+                            <label class="active form-text" for="factoryCountPeople">Скорость добычи</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer grey darken-3">
+                        <button type="submit" class="modal-close waves-effect waves-light btn-flat form-text grey-custom">Создать</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

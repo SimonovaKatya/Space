@@ -1,0 +1,48 @@
+@import '../node_modules/materialize-css/sass/materialize.scss';
+@import 'scss/variables';
+
+$default-offset: 12px;
+
+html, body {
+	font-family: Verdana, sans-serif;
+	font-size: 24px;
+	background-image: url("assets/images/back.jpg");
+	color: #FFFFFF;
+	background-attachment: fixed;
+	background-position: center top;
+	background-size: contain;
+}
+
+.title {
+	font-size: 30px;
+	color: #FFFFFF;
+}
+
+.my-container {
+	justify-content: space-between;
+}
+
+.grey-custom {
+	background-color:map-get($grey, "darken-2") !important;
+
+	&:hover {
+		background-color:map-get($grey, "darken-1") !important;
+	}
+}
+
+.form {
+	position: absolute;
+}
+
+.form-text {
+	color: #FFFFFF !important;
+	box-shadow: 0 0 0 #FFFFFF !important;
+}
+
+.form-input {
+	border-bottom: 1px solid white !important;
+
+	&:focus {
+		box-shadow: 0 1px 0 0 map-get($grey, "darken-1") !important;
+	}
+}
