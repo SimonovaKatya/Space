@@ -66,14 +66,16 @@ class Space {
 	}
 
 	private initialize = (): void => {
-		document.addEventListener('DOMContentLoaded', function() {
+		document.addEventListener('DOMContentLoaded', function () {
 			const modalList = document.querySelectorAll('.modal');
-				M.Modal.init(modalList);
+			M.Modal.init(modalList);
 		});
 
-		this.planetInfo.forEach((planet) => {this.planetList.push(new Planet(planet.x, planet.y, planet.name)); });
+		this.planetInfo.forEach((planet) => {
+			this.planetList.push(new Planet(planet.x, planet.y, planet.name));
+		});
 		this.renderPlanetList();
-	}
+	};
 
 	private renderPlanetList() {
 		const ul: HTMLUListElement = document.createElement('ul');
@@ -121,7 +123,7 @@ class Space {
 
 		const colonyCreate = document.getElementById('colonyCreate') as HTMLElement;
 		colonyCreate.onsubmit = this.createColonyCallback;
-	}
+	};
 
 	private renderPlanetHeader() {
 		this.planetHeaderElement.planetInfo = document.createElement('span');
@@ -189,7 +191,7 @@ class Space {
 		this.clearHeader();
 		this.currentPlanet = null;
 		this.renderPlanetList();
-	}
+	};
 
 	private createColonyCallback = (e) => {
 		e.preventDefault();
@@ -202,7 +204,7 @@ class Space {
 		e.target[2].nextElementSibling.classList.remove('active');
 		this.clearBoard();
 		this.renderColonyList(this.currentPlanet.colonyList);
-	}
+	};
 
 	private chooseColonyCallback = (e) => {
 		this.clearBoard();
@@ -215,34 +217,40 @@ class Space {
 
 		const factoryCreate = document.getElementById('factoryCreate') as HTMLElement;
 		factoryCreate.onsubmit = this.createFactoryCallback;
-	}
+	};
 
 	private renderColonyHeader() {
 		this.colonyHeaderElement.colonyInfo = document.createElement('span');
 		this.colonyHeaderElement.colonyInfo.append(`Колония: ${this.currentColony.name}`);
 
 		this.colonyHeaderElement.createFactoryButton = document.createElement('a');
-		this.colonyHeaderElement.createFactoryButton.classList.add('waves-effect');
-		this.colonyHeaderElement.createFactoryButton.classList.add('waves-light');
-		this.colonyHeaderElement.createFactoryButton.classList.add('btn');
-		this.colonyHeaderElement.createFactoryButton.classList.add('grey-custom');
-		this.colonyHeaderElement.createFactoryButton.classList.add('right');
-		this.colonyHeaderElement.createFactoryButton.classList.add('modal-trigger');
+		this.colonyHeaderElement.backColonyListButton = document.createElement('a');
+
+		const addClasses = (cls: Array<string>, colonyHeaderElementKey) => {
+			cls.forEach(someClass => {
+				this.colonyHeaderElement[colonyHeaderElementKey].classList.add(someClass);
+			});
+		};
+
+		const classes = ['waves-effect', 'waves-light', 'btn', 'grey-custom', 'right'];
+
+		addClasses(classes, 'backColonyListButton');
+		addClasses([...classes, 'modal-trigger'], 'createFactoryButton');
+
 		this.colonyHeaderElement.createFactoryButton.append('Создать фабрику');
 		this.colonyHeaderElement.createFactoryButton.href = '#modal2';
 
-		this.colonyHeaderElement.backColonyListButton = document.createElement('a');
-		this.colonyHeaderElement.backColonyListButton.classList.add('waves-effect');
-		this.colonyHeaderElement.backColonyListButton.classList.add('waves-light');
-		this.colonyHeaderElement.backColonyListButton.classList.add('btn');
-		this.colonyHeaderElement.backColonyListButton.classList.add('grey-custom');
-		this.colonyHeaderElement.backColonyListButton.classList.add('right');
 		this.colonyHeaderElement.backColonyListButton.append('К списку колоний');
-		this.colonyHeaderElement.backColonyListButton.onclick = this.backColonyListCallback ;
+		this.colonyHeaderElement.backColonyListButton.onclick = this.backColonyListCallback;
 
-		this.header.append(this.colonyHeaderElement.colonyInfo);
-		this.header.append(this.colonyHeaderElement.createFactoryButton);
-		this.header.append(this.colonyHeaderElement.backColonyListButton);
+		const headerComponents = [
+			this.colonyHeaderElement.colonyInfo,
+			this.colonyHeaderElement.createFactoryButton,
+			this.colonyHeaderElement.backColonyListButton
+		];
+		for (const component of headerComponents) {
+			this.header.append(component);
+		}
 	}
 
 	private renderFactoryList(factoryList: Factory[]) {
@@ -287,13 +295,13 @@ class Space {
 		this.currentColony = null;
 		this.renderColonyList(this.currentPlanet.colonyList);
 		this.renderPlanetHeader();
-	}
+	};
 
 	private deleteColumn = (e) => {
 		this.currentPlanet.deleteColony(e.target.dataset.id);
 		this.clearBoard();
 		this.renderColonyList(this.currentPlanet.colonyList);
-	}
+	};
 
 	private createFactoryCallback = (e) => {
 		e.preventDefault();
@@ -306,7 +314,7 @@ class Space {
 		e.target[2].nextElementSibling.classList.remove('active');
 		this.clearBoard();
 		this.renderFactoryList(this.currentColony.factoryList);
-	}
+	};
 
 	private renderResourceList = () => {
 		const previosInfo: HTMLElement = document.getElementById('storageInfo') as HTMLElement;
@@ -324,13 +332,13 @@ class Space {
 				this.content.append(info);
 			}
 		}
-	}
+	};
 
 	private deleteFactory = (e) => {
 		this.currentColony.deleteFactory(e.target.dataset.id);
 		this.clearBoard();
 		this.renderFactoryList(this.currentColony.factoryList);
-	}
+	};
 }
 
 new Space();
