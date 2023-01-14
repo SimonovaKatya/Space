@@ -38,7 +38,7 @@
     "typedoc": "0.14.2",
     "typescript": "3.2.2",
     "webpack": "4.28.4",
-    "webpack-cli": "3.2.1"
+    "webpack-cli": "3.3.12"
   },
   "dependencies": {
     "@babel/core": "^7.12.10",
